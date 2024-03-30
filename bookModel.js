@@ -1,19 +1,19 @@
 const fs = require('fs');
 
-function Getbooks() {
+function getbooksall() {
   const Allbooks = fs.readFileSync('data/books.json');
   const books = JSON.parse(Allbooks);
   return books;
 }
 
-function updatebooks() {
-  const books = Getbooks();
+function updatebooks(books) {
+
   const booksJSON = JSON.stringify(books, null, 2);
   fs.writeFileSync('data/books.json', booksJSON);
-  
+
 }
 
 module.exports = {
-  Getbooks,
+  getbooksall,
   updatebooks
 };

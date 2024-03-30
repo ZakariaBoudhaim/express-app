@@ -1,13 +1,13 @@
 const bookModel = require('./bookModel');
 
 function getBooks(req, res) {
-  const books = bookModel.Getbooks();
+  const books = bookModel.getbooksall();
   res.render('books', { books: books });
 }
 
 function getBookById(req, res) {
   const bookId = parseInt(req.params.id);
-  const books = bookModel.Getbooks();
+  const books = bookModel.getbooksall();
   const book = books.find(book => book.id === bookId);
   if (book) {
     res.render('book', { book: book });
@@ -18,16 +18,20 @@ function getBookById(req, res) {
 
 function addBook(req, res) {
   const { title, author, year } = req.body;
-    const newBook = { title, author, year };
-    // Fetch existing books
-    const books = GetBooks();
-
-    // Add the new book to the array
+  const books = bookModel.getbooksall();
+  const newBook = {
+    id: books.length + 1,
+    title: title,
+    author: author,
+    year: year
+    };
     books.push(newBook);
-    
+    bookModel.updatebooks(books);
+    res.redirect('/books');
 }
 
 module.exports = {
   getBooks,
-  getBookById
+  getBookById,
+  addBook
 };

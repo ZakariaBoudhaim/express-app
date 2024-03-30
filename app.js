@@ -20,9 +20,7 @@ app.get('/books/new', (req, res) => {
   res.render('new');
 });
 
-app.post('/books/new', (req, res) => {
-
-});
+app.post('/books/new', bookController.addBook);
 
 app.get('/books', bookController.getBooks );
 
