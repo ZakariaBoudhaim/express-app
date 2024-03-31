@@ -7,13 +7,12 @@ function getbooksall() {
 }
 
 function updatebooks(books) {
-
   const booksJSON = JSON.stringify(books, null, 2);
   fs.writeFileSync('data/books.json', booksJSON);
-
 }
 
 module.exports = {
   getbooksall,
   updatebooks
 };
+

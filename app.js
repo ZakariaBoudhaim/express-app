@@ -26,6 +26,6 @@ app.get('/books', bookController.getBooks );
 
 app.get('/books/:id', bookController.getBookById);
 
-
+app.post('/books/:id', bookController.deleteBook);
 
 console.log(`Server running on http://localhost:${port}`);

@@ -30,7 +30,22 @@ function addBook(req, res) {
     res.redirect('/books');
 }
 
+function deleteBook(req, res) {
+  const bookId = parseInt(req.params.id);
+  const books = bookModel.getbooksall();
+  const book = books.find(book => book.id === bookId);
+  if (book) {
+    books.splice(books.indexOf(book), 1);
+    bookModel.updatebooks(books);
+    res.redirect('/books');
+  } else {
+    res.status(404).send('Book not found');
+  }
+
+}
+
 module.exports = {
+  deleteBook,
   getBooks,
   getBookById,
   addBook
