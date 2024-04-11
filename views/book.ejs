@@ -8,13 +8,15 @@
     <title><%= book.title %></title>
 </head>
 <body>
+  <%- include('navbar.ejs') %>
+
   <div class="container">
   <h1><%= book.title %></h1>
     <p>Author: <%= book.author %></p>
     <p>Year: <%= book.year %></p>
-    <a href="/books">Back to all books</a>
+    <a class ="btn btn-success mb-3"href="/books">Back to all books</a>
     <form action="/books/<%= book.id %>?_method=DELETE" method="POST">
-      <button type="submit">Delete</button>
+      <button class="btn btn-danger" type="submit">Delete</button>
     </form>
   </div>
 </body>
